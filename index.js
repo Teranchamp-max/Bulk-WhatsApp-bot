@@ -1,11 +1,24 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const express = require('express');
 
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+    res.send('🤖 WhatsApp bot is running!');
+});
+
+app.listen(PORT, () => {
+    console.log(`🌐 Web server listening on port ${PORT}`);
+});
+
+// --- WhatsApp Bot Logic ---
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
-        args: ['--no-sandbox'],
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
     },
 });
 
