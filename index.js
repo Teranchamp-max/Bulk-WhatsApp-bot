@@ -6,14 +6,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-    res.send('🤖 WhatsApp bot is running!');
+    res.send('🤖 WhatsApp bot is running on Render!');
 });
 
 app.listen(PORT, () => {
     console.log(`🌐 Web server listening on port ${PORT}`);
 });
 
-// --- WhatsApp Bot Logic ---
+// ---- WhatsApp Bot ----
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
